@@ -11,4 +11,3 @@ public interface EmployeeMapper {
 	public Employee getEmpById(Integer id);
 
 }
-1
