@@ -2,8 +2,14 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dt.mybatis.EmployeeMapper">
- <select id="selectEmp" resultType="com.dt.mybatis.bean.Employee">
- select id,last_name lastName,email,gender from tbl_employee where id = #{id}
+<mapper namespace="com.dt.mybatis.dao.EmployeeMapper">
+<!-- 
+namespace:表示名称空间，可以任意取名，但最好顾名思义，现在指定为接口的全类名
+id:唯一标识符，可以任意取名，但最好顾名思义
+resultType:返回值类型，表示查出数据库中id的信息将其返回为一个对象，这里表示前面Employee.java中的Employee对象，故这里可以写Employee.java的位置
+#{id}:表示从传过来的Id中取出id值，在MyBatisTest.java文件中的selectOne方法中第二个参数中具体写要查询的Id
+ -->
+ <select id="getEmpById" resultType="com.dt.mybatis.bean.Employee">
+ select id,last_name lastName,email,gender from tbl_employee where id = #{id}<!-- 这里为查询sql语句的写法,last_name lastName表示将属性的名字取别名为lastName -->
  </select>
 </mapper>
